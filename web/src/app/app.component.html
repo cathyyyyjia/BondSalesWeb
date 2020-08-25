@@ -1,38 +1,4 @@
 <h1>{{title}}</h1>
-<h1>{{titleEn}}</h1>
-
-<div>
-  <app-login></app-login>
-
-
-  <div class="d-flex">
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-      <li ngbNavItem="top">
-        <a ngbNavLink>销售数据录入</a>
-
-      </li>
-      <li ngbNavItem="middle">
-        <a ngbNavLink>查询报表 Report Query</a>
-        <ng-template ngbNavContent>
-          <p>根据1个或者多个查询条件进行查询</p>
-        </ng-template>
-      </li>
-      <li ngbNavItem="bottom">
-        <a ngbNavLink>统计 Statistics</a>
-        <ng-template ngbNavContent>
-          <span><ngb-datepicker #dp></ngb-datepicker></span>
-
-        </ng-template>
-      </li>
-    </ul>
-
-    <div [ngbNavOutlet]="nav" class="ml-4"></div>
-  </div>
-
-  <pre>Active: {{ active }}</pre>
-</div>
-
-
-
+<h2>{{titleEn}}</h2>
 
 <router-outlet></router-outlet>

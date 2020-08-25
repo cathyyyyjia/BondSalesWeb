@@ -1,0 +1,24 @@
+<div class="d-flex">
+  <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
+    <li ngbNavItem="top">
+      <a ngbNavLink>销售数据录入<br>Add Sales Record</a>
+      <ng-template ngbNavContent>
+        <app-add-record></app-add-record>
+      </ng-template>
+    </li>
+    <li ngbNavItem="middle">
+      <a ngbNavLink>报表查询<br>Report Inquiry</a>
+      <ng-template ngbNavContent>
+        <app-report-inquiry></app-report-inquiry>
+      </ng-template>
+    </li>
+    <li ngbNavItem="bottom">
+      <a ngbNavLink>统计<br>Statistics</a>
+      <ng-template ngbNavContent>
+        <span><p>Something</p></span>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ml-4"></div>
+</div>

@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = '债券销售管理系统';
   titleEn = 'Bond Sales Management System';
-  active = 'top';
 }
