@@ -1,22 +1,24 @@
 <div class="container">
   <div class="header">
     <h4 class="title" id="modal-basic-title">用户登录</h4>
+    <!-- <pre>
+      {{oneUser |json}}
+    </pre> -->
   </div>
   <hr>
   <div class="body">
-    <form class="px-4 py-3">
       <div class="form-group">
-        <label for="username">用户名（邮箱地址）<br>Username (Email Address)</label>
-        <input type="email" class="form-control" id="username" placeholder="email@example.com">
+        <label for="username">用户名 Username</label>
+        <input [(ngModel)]='oneUser.name' type="email" class="form-control" id="username" placeholder="email@example.com">
       </div>
       <div class="form-group">
-        <label for="password">密码<br>Password</label>
-        <input type="password" class="form-control" id="password" placeholder="8-digit Password">
+        <label for="password">密码 Password</label>
+        <input [(ngModel)]='oneUser.pass' type="password" class="form-control" id="password" placeholder="8-digit Password">
       </div>
-      <button type="submit" class="btn btn-primary" routerLink='/manage'>登录 Login</button>
+      <button (click)='loginSubmit()' type="submit" class="btn btn-primary" routerLink='/manage'>登录 Login</button>
       <button type="submit" class="btn btn-secondary" routerLink='/home'>取消 Cancel</button>
-    </form>
-    <div class="dropdown-divider"></div>
+    <hr>
     <button ngbDropdownItem routerLink='/register'>新用户？点击此处注册<br>New user? Register here.</button>
   </div>
 </div>
+
