@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageComponent implements OnInit {
 
+  user: '';
   constructor() { }
 
   ngOnInit(): void {

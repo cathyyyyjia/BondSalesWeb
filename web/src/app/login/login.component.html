@@ -1,9 +1,6 @@
 <div class="container">
   <div class="header">
-    <h4 class="title" id="modal-basic-title">用户登录</h4>
-    <!-- <pre>
-      {{oneUser |json}}
-    </pre> -->
+    <h4 class="title" id="modal-basic-title">登录</h4>
   </div>
   <hr>
   <div class="body">
@@ -15,7 +12,8 @@
         <label for="password">密码 Password</label>
         <input [(ngModel)]='oneUser.pass' type="password" class="form-control" id="password" placeholder="8-digit Password">
       </div>
-      <button (click)='loginSubmit()' type="submit" class="btn btn-primary" routerLink='/manage'>登录 Login</button>
+      <button (click)='loginSubmit()' type="submit" class="btn btn-primary">登录 Login</button>
+      &nbsp;
       <button type="submit" class="btn btn-secondary" routerLink='/home'>取消 Cancel</button>
     <hr>
     <button ngbDropdownItem routerLink='/register'>新用户？点击此处注册<br>New user? Register here.</button>

@@ -1,25 +1,33 @@
-<div class="d-flex">
-  <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
-    <li ngbNavItem="add-record">
-      <a ngbNavLink>销售数据录入<br>Add Sales Record</a>
-      <ng-template ngbNavContent>
-        <app-add-record></app-add-record>
-      </ng-template>
-    </li>
-    <li ngbNavItem="report-inquiry">
-      <a ngbNavLink>报表查询<br>Report Inquiry</a>
-      <ng-template ngbNavContent>
-        <app-report-inquiry></app-report-inquiry>
-      </ng-template>
-    </li>
-    <li ngbNavItem="statistics">
-      <a ngbNavLink>统计<br>Statistics</a>
-      <ng-template ngbNavContent>
-        <span><p>Something</p></span>
-      </ng-template>
-    </li>
-    <button class="btn btn-lg btn-outline-secondary" routerLink='/home'>退出登录<br>Logout</button>
-  </ul>
+<div class="container">
+  <div class="d-flex">
+    <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
+      <li ngbNavItem="add-record">
+        <a ngbNavLink>销售数据录入<br>Add Sales Record</a>
+        <ng-template ngbNavContent>
+          <app-add-record></app-add-record>
+        </ng-template>
+      </li>
+      <li ngbNavItem="report-inquiry">
+        <a ngbNavLink>报表查询<br>Report Inquiry</a>
+        <ng-template ngbNavContent>
+          <app-report-inquiry></app-report-inquiry>
+        </ng-template>
+      </li>
+      <li ngbNavItem="statistics">
+        <a ngbNavLink>统计<br>Statistics</a>
+        <ng-template ngbNavContent>
+          <span><p>Something</p></span>
+        </ng-template>
+      </li>
+      <hr><hr><hr><hr><hr><hr><hr>
+    <button class="btn btn-secondary" routerLink='/home'>登出 Logout</button>
+    </ul>
 
-  <div [ngbNavOutlet]="nav" class="ml-4"></div>
+    <div [ngbNavOutlet]="nav" class="ml-4"></div>
+    <table></table>
+  </div>
+
+  <div>
+
+  </div>
 </div>
