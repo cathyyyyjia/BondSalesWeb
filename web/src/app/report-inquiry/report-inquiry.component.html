@@ -1,4 +1,4 @@
-<div style="display:inline-block;">
+<div>
   <div class="header">
     <h4 class="title">报表查询 Report Inquiry</h4>
   </div>
@@ -6,15 +6,17 @@
   <!-- <pre>
       {{oneRecord | json}}
     </pre> -->
-  <div class="form-group">
+  <div class="form-group" style="display: inline-block;">
     <label>销售姓名 Sales Name</label>
     <input [(ngModel)]="oneRecord.saleName" placeholder='Sales Name' type="text" class="form-control" />
   </div>
-  <div class="form-group">
+  &nbsp;
+  <div class="form-group" style="display: inline-block;">
     <label>债券类型 Bond Name</label>
     <input [(ngModel)]="oneRecord.bondName" placeholder='Bond Name' type="text" class="form-control" />
   </div>
-  <div class="form-group">
+  &nbsp;
+  <div class="form-group" style="display: inline-block;">
     <label>起始日期 Create Date</label>
     <div class="input-group">
       <input [(ngModel)]="oneRecord.createdAt" class="form-control" placeholder="YYYY-MM-DD" name="dp" ngbDatepicker
@@ -33,21 +35,21 @@
       </div>
     </div>
   </div>
-
-  <button (click)="searchData()" type="submit" class="btn btn-primary">查询 Retrieve</button>
+  &nbsp;
+  <button (click)="searchData()" type="submit" class="btn btn-primary">查询 Search</button>
   <p id="message" style="color:red; position: relative; bottom:-5px">{{message}}</p>
 </div>
 
-<div style="display:inline-block;" id="displayTable">
+<div id="displayTable">
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Sales Name</th>
-        <th scope="col">Bond Name</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">Update Data</th>
-        <th scope="col">Amount</th>
+        <th scope="col">{{field1}}</th>
+        <th scope="col">{{field2}}</th>
+        <th scope="col">{{field3}}</th>
+        <th scope="col">{{field4}}</th>
+        <th scope="col">{{field5}}</th>
+        <th scope="col">{{field6}}</th>
       </tr>
     </thead>
     <tbody>

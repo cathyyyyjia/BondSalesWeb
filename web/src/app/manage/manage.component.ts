@@ -26,13 +26,6 @@ export class ManageComponent implements OnInit {
     this.http.post<User>(url, JSON.stringify(this.oneUser), httpOptions).subscribe(
       (res: any) => {
         console.log(res);
-        // if (res != null){
-        // // if (true){
-        //   // console.log('ready');
-        //   this.message = '统计已生成！Statistics generated!';
-        // } else {
-        //   this.message = '统计失败！Fail to do statistics!';
-        // }
       }
     );
   }

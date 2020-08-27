@@ -1,8 +1,15 @@
-{
+[{
   "id": 10,
   "bondName": "Bond A",
   "saleName": "Cathy",
   "amount": 2000000,
   "createdAt": "2020-08-27",
   "updatedAt": "2020-08-27"
-}
+},{
+  "id": 12,
+  "bondName": "Bond A",
+  "saleName": "Cathy",
+  "amount": 2000000,
+  "createdAt": "2020-08-27",
+  "updatedAt": "2020-08-27"
+}]

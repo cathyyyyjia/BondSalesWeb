@@ -1,26 +1,46 @@
 <div class="container">
   <div class="d-flex">
-    <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
+    <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical" style="width:20%;">
       <li ngbNavItem="add-record">
-        <a ngbNavLink>销售数据录入<br>Add Sales Record</a>
+        <a ngbNavLink class="media">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+            销售数据录入<br>Add Sales Record
+          </a>
         <ng-template ngbNavContent>
           <app-add-record></app-add-record>
         </ng-template>
       </li>
       <li ngbNavItem="report-inquiry">
-        <a ngbNavLink>报表查询<br>Report Inquiry</a>
+        <a ngbNavLink class="media">
+          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-search mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+          </svg>
+          报表查询<br>Report Inquiry
+        </a>
         <ng-template ngbNavContent>
           <app-report-inquiry></app-report-inquiry>
         </ng-template>
       </li>
       <li ngbNavItem="statistics">
-        <a ngbNavLink>统计<br>Statistics</a>
+        <a ngbNavLink class="media">
+          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-spreadsheet mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
+            <path fill-rule="evenodd" d="M13 6H3V5h10v1zm0 3H3V8h10v1zm0 3H3v-1h10v1z"/>
+            <path fill-rule="evenodd" d="M5 14V6h1v8H5zm4 0V6h1v8H9z"/>
+          </svg>
+          统计<br>Statistics
+        </a>
         <ng-template ngbNavContent>
           <app-statistics></app-statistics>
         </ng-template>
       </li>
-      <hr><hr><hr><hr><hr><hr><hr>
+      <hr><hr><hr><hr><hr><hr>
     <button (click)="logout()" class="btn btn-secondary" routerLink='/home'>登出 Logout</button>
+    <br>
     </ul>
 
     <div [ngbNavOutlet]="nav" class="ml-4"></div>

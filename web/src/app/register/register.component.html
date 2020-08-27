@@ -20,12 +20,13 @@
       <input [(ngModel)]='oneUser.pass' type="password" class="form-control" id="password"
         placeholder="8-digit Password">
     </div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)='registerSubmit()'type="submit" class="btn btn-primary" >注册 Register</button>
     &nbsp;
     <button type="submit" class="btn btn-secondary" routerLink='/home'>取消 Cancel</button>
     <p style="color:red; text-align:center;position: relative; bottom:-5px">{{message}}</p>
     <hr>
-    <button ngbDropdownItem routerLink='/login'>已有账户？点击登录<br>User already? Login here.</button>
+    <button ngbDropdownItem routerLink='/login'  style="text-align: center">已有账户？点击登录<br>User already? Login here.</button>
   </div>
+  <br><br>
 </div>

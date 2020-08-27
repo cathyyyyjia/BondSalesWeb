@@ -42,10 +42,16 @@ export class ReportInquiryComponent implements OnInit {
     bondName: '',
     saleName: '',
     amount: null,
-    createdAt: null,
+    createdAt: '',
     updatedAt: '2021-01-01'
   };
   tableResult: tableResult[];
+  field1: string;
+  field2: string;
+  field3: string;
+  field4: string;
+  field5: string;
+  field6: string;
 
   constructor(private http: HttpClient, private modalService: NgbModal) { }
 
@@ -55,10 +61,8 @@ export class ReportInquiryComponent implements OnInit {
   searchData(): void {
     this.message = '';
     // Check required input, alert if missing any
-    if (this.oneRecord.saleName == '' || this.oneRecord.bondName == '' || this.oneRecord.createdAt == '' || this.oneRecord.createdAt == 'undefined-undefined-undefined') {
-      // this.modalService.open(ModalContent);
-      this.message = '请完成所有输入栏！All fields required!';
-      return;
+    if (this.oneRecord.createdAt == 'undefined-undefined-undefined') {
+      this.oneRecord.createdAt = '';
     }
 
     // Convert date format
@@ -83,6 +87,12 @@ export class ReportInquiryComponent implements OnInit {
       (res: any) => {
         console.log(res);
         if (res != null) {
+          this.field1 = "ID";
+          this.field2 = "Sales Name";
+          this.field3 = "Bond Name";
+          this.field4 = "Create Date";
+          this.field5 = "Update Date";
+          this.field6 = "Amount";
           this.tableResult = res;
           const modalRef = this.modalService.open(ModalContent);
           modalRef.componentInstance.result = '报告已生成！Report generated!';
