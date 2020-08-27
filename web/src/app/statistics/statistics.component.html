@@ -3,44 +3,31 @@
     <h4 class="title">统计 Statistics</h4>
   </div>
   <hr>
-  <!-- <pre>
-    {{oneRecord1 | json}}
-    {{oneRecord2 | json}}
-  </pre> -->
-  <div class="form-group">
-    <label>销售姓名 Sales Name</label>
-    <input [(ngModel)]="oneRecord1.saleName" class="form-control" placeholder='Sales Name' />
-  </div>
+  <input [(ngModel)]="fileUrl" type="file" />
+  <br><br>
+  <button (click)="uploadFile()" type="submit" class="btn btn-primary">上传 Upload</button>
+  <br><br>
+  <button (click)="groupByName()" type="submit" class="btn btn-primary">按销售姓名生成报表<br>Generate Report By Sales Name</button>
+  <br><br>
+  <button (click)="groupByCreateDate()" type="submit" class="btn btn-primary">按初始日期生成报表<br>Generate Report By Create Date</button>
 
+  <p id="message" style="position: relative; bottom:-5px">{{message}}</p>
+  <p id="messageErr" style="color:red; position: relative; bottom:-5px">{{messageErr}}</p>
+</div>
 
-  <button (click)="groupByName()" type="submit" class="btn btn-primary">按销售统计 By Sales Name</button>
-  <p id="message1" style="color:black; position: relative; bottom:-5px">{{message1}}</p>
-
-  <br>
-
-  <div class="form-group">
-    <label>起始日期 Create Date</label>
-    <div class="input-group">
-      <input [(ngModel)]="oneRecord2.createdAt" class="form-control" placeholder="YYYY-MM-DD" name="dp" ngbDatepicker
-        #d1="ngbDatepicker">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
-          <!-- calendar icon -->
-          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar3" fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
-            <path fill-rule="evenodd"
-              d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <button (click)="groupByCreateDate()" type="submit" class="btn btn-primary">按起始日期统计 By Create Date</button>
-  <p id="message2" style="color:black; position: relative; bottom:-5px">{{message2}}</p>
-
-  <p id="message" style="color:red; position: relative; bottom:-5px">{{message}}</p>
-
+<div style="display:inline-block;" id="displayTable">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">{{ field1 }}</th>
+        <th scope="col">{{ field2 }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of tableResult; index as i">
+        <td>{{ record.key }}</td>
+        <td>${{ record.value }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -24,7 +24,7 @@ interface tableResult {
 })
 export class ModalContent {
   @Input() result;
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal) { }
 }
 
 @Component({
@@ -62,16 +62,18 @@ export class ReportInquiryComponent implements OnInit {
     }
 
     // Convert date format
-    let year = new String(this.oneRecord.createdAt['year']);
-    let month = new String(this.oneRecord.createdAt['month']);
-    let day = new String(this.oneRecord.createdAt['day']);
-    if (month.length === 1) {
-      month = '0' + month;
+    if (typeof this.oneRecord.createdAt != 'string') {
+      let year = new String(this.oneRecord.createdAt['year']);
+      let month = new String(this.oneRecord.createdAt['month']);
+      let day = new String(this.oneRecord.createdAt['day']);
+      if (month.length === 1) {
+        month = '0' + month;
+      }
+      if (day.length === 1) {
+        day = '0' + day;
+      }
+      this.oneRecord.createdAt = year + '-' + month + '-' + day;
     }
-    if (day.length === 1) {
-      day = '0' + day;
-    }
-    this.oneRecord.createdAt = year + '-' + month + '-' + day;
 
     const url = 'http://192.168.0.100:8080/BondSaleCtrl/queryBondByJson'; // TODO
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -80,7 +82,7 @@ export class ReportInquiryComponent implements OnInit {
     this.http.post<SalesRecord>(url, JSON.stringify(this.oneRecord), httpOptions).subscribe(
       (res: any) => {
         console.log(res);
-        if (res != null){
+        if (res != null) {
           this.tableResult = res;
           const modalRef = this.modalService.open(ModalContent);
           modalRef.componentInstance.result = '报告已生成！Report generated!';
