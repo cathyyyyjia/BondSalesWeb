@@ -1,57 +1,64 @@
-<div class="header">
-  <h4 class="title">报表查询<br>Report Inquiry</h4>
-</div>
-<div class="form-group">
-  <label>销售姓名 Sales Name</label>
-  <select class="form-control" placeholder='Ruby'>
-    <option>Tom</option>
-    <option>Jerry</option>
-    <option>Ruby</option>
-  </select>
-</div>
-<div class="form-group">
-  <label>债券类型 Bond Name</label>
-  <select class="form-control" placeholder='Bond A'>
-    <option>Bond A</option>
-    <option>Bond B</option>
-    <option>Bond C</option>
-  </select>
-</div>
-<div class="form-group">
-  <label>开始日期 Start Date</label>
-  <div class="input-group">
-    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d1="ngbDatepicker">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
-        <!-- calendar icon -->
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar3" fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd"
-            d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
-          <path fill-rule="evenodd"
-            d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-        </svg>
-      </button>
+<div style="display:inline-block;">
+  <div class="header">
+    <h4 class="title">报表查询 Report Inquiry</h4>
+  </div>
+  <hr>
+  <!-- <pre>
+    {{oneRecord | json}}
+  </pre> -->
+  <div class="form-group">
+    <label>销售姓名 Sales Name</label>
+    <input [(ngModel)]="oneRecord.saleName" placeholder='Ruby' type="text" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label>债券类型 Bond Name</label>
+    <input [(ngModel)]="oneRecord.bondName" placeholder='Bond A' type="text" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label>起始日期 Create Date</label>
+    <div class="input-group">
+      <input [(ngModel)]="oneRecord.createdAt" class="form-control" placeholder="YYYY-MM-DD" name="dp" ngbDatepicker
+        #d1="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+          <!-- calendar icon -->
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar3" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+            <path fill-rule="evenodd"
+              d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
-</div>
-<button type="submit" class="btn btn-primary">提交</button>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <!-- <th scope="col">#</th> -->
-    <th scope="col">ID</th>
-    <th scope="col">Sales Name</th>
-    <th scope="col">Bond Name</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let record of sales; index as i">
-    <!-- <th scope="row">{{ i + 1 }}</th> -->
-    <td>{{ record.id }}</td>
-    <td>{{ record.sales_name }}</td>
-    <td>{{ record.bond_name}}</td>
-  </tr>
-  </tbody>
-</table>
+  <button (click)="searchData()" type="submit" class="btn btn-primary">查询 Retrieve</button>
+  <p id="message" style="color:red; position: relative; bottom:-5px">{{message}}</p>
+</div>
+
+<div style="display:inline-block;" id="displayTable">
+  <table  class="table table-striped" style="position: relative;left: 40px">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Sales Name</th>
+        <th scope="col">Bond Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Update Data</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of tableResult; index as i">
+        <td>{{ record.id }}</td>
+        <td>{{ record.saleName }}</td>
+        <td>{{ record.bondName }}</td>
+        <td>{{ record.createdAt }}</td>
+        <td>{{ record.updatedAt }}</td>
+        <td>${{ record.amount }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

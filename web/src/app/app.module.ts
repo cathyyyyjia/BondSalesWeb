@@ -12,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { AddRecordComponent } from './add-record/add-record.component';
 import { ReportInquiryComponent } from './report-inquiry/report-inquiry.component';
 import { FormsModule } from '@angular/forms';
+import { StatisticsComponent } from './statistics/statistics.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     ManageComponent,
     RegisterComponent,
     AddRecordComponent,
-    ReportInquiryComponent
+    ReportInquiryComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

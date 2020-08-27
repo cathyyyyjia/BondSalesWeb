@@ -1,44 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SalesRecord } from '../salesRecord';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-// interface Country {
-//   name: string;
-//   flag: string;
-//   area: number;
-//   population: number;
-// }
+const salesList = ['Tom', 'Jerry', 'Cathy', 'Ruby', 'Charlie', 'Wang', 'Zhang', 'Blabla'];
+const bondList = ['Bond A', 'Bond B'];
 
-// const COUNTRIES: Country[] = [
-//   {
-//     name: 'Russia',
-//     flag: 'f/f3/Flag_of_Russia.svg',
-//     area: 17075200,
-//     population: 146989754
-//   },
-//   {
-//     name: 'Canada',
-//     flag: 'c/cf/Flag_of_Canada.svg',
-//     area: 9976140,
-//     population: 36624199
-//   }
-// ];
-interface Sales {
+interface tableResult {
   id: number;
-  sales_name: string;
-  bond_name: string;
+  bondName: string;
+  saleName: string;
   amount: number;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
 }
-const SALES: Sales[] = [
-  {
-    id: 1,
-    sales_name: 'Tom',
-    bond_name: 'Bond A',
-    amount: 10000,
-    created_at: '2020-01-01',
-    updated_at: '2020-01-02'
-  }
-];
+
+@Component({
+  template: `
+    <div class="modal-body">
+      <p>{{result}}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">OK</button>
+    </div>
+  `
+})
+export class ModalContent {
+  @Input() result;
+  constructor(public activeModal: NgbActiveModal) {}
+}
 
 @Component({
   selector: 'app-report-inquiry',
@@ -47,12 +37,67 @@ const SALES: Sales[] = [
 })
 export class ReportInquiryComponent implements OnInit {
 
-  constructor() { }
+  public model1: any;
+  public model2: any;
+  message: string;
+  oneRecord: SalesRecord = {
+    id: null,
+    bondName: '',
+    saleName: '',
+    amount: null,
+    createdAt: null,
+    updatedAt: '2021-01-01'
+  };
+  tableResult: tableResult[];
+
+  constructor(private http: HttpClient, private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
 
-  // countries = COUNTRIES;
-  sales = SALES;
+  searchData(): void {
+    this.message = '';
+    // Check required input, alert if missing any
+    if (this.oneRecord.saleName == '' || this.oneRecord.bondName == '' || this.oneRecord.createdAt == '' || this.oneRecord.createdAt == 'undefined-undefined-undefined') {
+      // this.modalService.open(ModalContent);
+      this.message = '请完成所有输入栏！All fields required!';
+      return;
+    }
+
+    // Convert date format
+    let year = new String(this.oneRecord.createdAt['year']);
+    let month = new String(this.oneRecord.createdAt['month']);
+    let day = new String(this.oneRecord.createdAt['day']);
+    if (month.length === 1) {
+      month = '0' + month;
+    }
+    if (day.length === 1) {
+      day = '0' + day;
+    }
+    this.oneRecord.createdAt = year + '-' + month + '-' + day;
+
+    const url = 'http://192.168.0.100:8080/BondSaleCtrl/queryBondByJson'; // TODO
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
+    console.log(this.oneRecord);
+    this.http.post<SalesRecord>(url, JSON.stringify(this.oneRecord), httpOptions).subscribe(
+      (res: any) => {
+        console.log(res);
+        if (res != null){
+        // if (true){
+          // console.log('ready');
+          this.tableResult = res;
+          const modalRef = this.modalService.open(ModalContent);
+          modalRef.componentInstance.result = '报告已生成！Report generated!';
+        } else {
+          this.message = '报告查询失败！Fail to retrieve report!';
+        }
+      }
+    );
+
+    // const modalRef = this.modalService.open(ModalContent);
+    // modalRef.componentInstance.result = '报告已生成！Report generated!';
+    // this.message = '报告已生成！Report generated!';
+  }
 
 }

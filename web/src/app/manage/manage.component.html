@@ -16,11 +16,11 @@
       <li ngbNavItem="statistics">
         <a ngbNavLink>统计<br>Statistics</a>
         <ng-template ngbNavContent>
-          <span><p>Something</p></span>
+          <app-statistics></app-statistics>
         </ng-template>
       </li>
       <hr><hr><hr><hr><hr><hr><hr>
-    <button class="btn btn-secondary" routerLink='/home'>登出 Logout</button>
+    <button (click)="logout()" class="btn btn-secondary" routerLink='/home'>登出 Logout</button>
     </ul>
 
     <div [ngbNavOutlet]="nav" class="ml-4"></div>

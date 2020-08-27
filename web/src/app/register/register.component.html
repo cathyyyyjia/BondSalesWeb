@@ -1,20 +1,30 @@
 <div class="container">
   <div class="header">
-    <h4 class="title" id="modal-basic-title">注册</h4>
+    <h4 class="title" id="modal-basic-title">
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+      <path fill-rule="evenodd" d="M13 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z" />
+    </svg> 注册</h4>
   </div>
   <hr>
   <div class="body">
     <div class="form-group">
-        <label for="username">用户名 Username</label>
-        <input type="email" class="form-control" id="username" placeholder="email@example.com">
-      </div>
-      <div class="form-group">
-        <label for="password">密码 Password</label>
-        <input type="password" class="form-control" id="password" placeholder="8-digit Password">
-      </div>
-      <button type="submit" class="btn btn-primary" routerLink='/login'>注册 Register</button>
-      &nbsp;
-      <button type="submit" class="btn btn-secondary" routerLink='/home'>取消 Cancel</button>
+      <label for="username">用户名 Username</label>
+      <input [(ngModel)]='oneUser.name' stype="email" class="form-control" id="username"
+        placeholder="email@example.com">
+    </div>
+    <div class="form-group">
+      <label for="password">密码 Password</label>
+      <input [(ngModel)]='oneUser.pass' type="password" class="form-control" id="password"
+        placeholder="8-digit Password">
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)='registerSubmit()'type="submit" class="btn btn-primary" >注册 Register</button>
+    &nbsp;
+    <button type="submit" class="btn btn-secondary" routerLink='/home'>取消 Cancel</button>
+    <p style="color:red; text-align:center;position: relative; bottom:-5px">{{message}}</p>
     <hr>
     <button ngbDropdownItem routerLink='/login'>已有账户？点击登录<br>User already? Login here.</button>
   </div>
