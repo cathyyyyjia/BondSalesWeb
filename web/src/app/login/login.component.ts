@@ -22,6 +22,14 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit(): void{
+
+    this.message = '';
+    // Check required input, alert if missing any
+    if (this.oneUser.name == '' || this.oneUser.pass == '') {
+      this.message = '请完成所有输入栏！All fields required!';
+      return;
+    }
+
     const url = 'http://192.168.0.100:8080/login'; // TODO
     const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 

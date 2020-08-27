@@ -34,6 +34,13 @@ export class StatisticsComponent implements OnInit {
   }
 
   groupByName(): void {
+    this.message1 = '';
+    // Check required input, alert if missing any
+    if (this.oneRecord1.saleName == '') {
+      this.message1 = '请输入销售姓名！Sales name required!';
+      return;
+    }
+
     const url = 'http://192.168.0.100:8080/BondSaleCtrl/ordersale';
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
@@ -44,7 +51,7 @@ export class StatisticsComponent implements OnInit {
         if (res != null){
         // if (true){
           // console.log('ready');
-          this.message1 = '统计结果 Result: ' + res;
+          this.message1 = 'Total Amount: ' + res;
         } else {
           this.message1 = '统计失败！Fail to count!';
         }
@@ -53,6 +60,13 @@ export class StatisticsComponent implements OnInit {
   }
 
   groupByCreateDate(): void {
+    this.message2 = '';
+    // Check required input, alert if missing any
+    if (this.oneRecord2.createdAt === '') {
+      this.message2 = '请输入起始日期！Create date required!';
+      return;
+    }
+
     // Convert date format
     let year = new String(this.oneRecord2.createdAt['year']);
     let month = new String(this.oneRecord2.createdAt['month']);
@@ -76,7 +90,7 @@ export class StatisticsComponent implements OnInit {
         if (res != null){
         // if (true){
           // console.log('ready');
-          this.message2 = '统计结果 Result: ' + res;
+          this.message2 = 'Total Amount: ' + res;
         } else {
           this.message2 = '统计失败！Fail to count!';
         }
