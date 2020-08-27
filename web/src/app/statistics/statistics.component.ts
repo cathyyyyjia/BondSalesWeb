@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SalesRecord } from '../salesRecord';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -8,7 +8,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
+
   public model: any;
+  message: string;
   message1: string;
   message2: string;
   oneRecord1: SalesRecord = {
@@ -28,16 +30,16 @@ export class StatisticsComponent implements OnInit {
     updatedAt: null
   };
 
-  constructor(private http: HttpClient, ) { }
+  constructor(private http: HttpClient,) { }
 
   ngOnInit(): void {
   }
 
   groupByName(): void {
-    this.message1 = '';
+    this.message = '';
     // Check required input, alert if missing any
     if (this.oneRecord1.saleName == '') {
-      this.message1 = '请输入销售姓名！Sales name required!';
+      this.message = '请输入销售姓名！Sales name required!';
       return;
     }
 
@@ -48,9 +50,7 @@ export class StatisticsComponent implements OnInit {
     this.http.post<SalesRecord>(url, JSON.stringify(this.oneRecord1), httpOptions).subscribe(
       (res: any) => {
         console.log(res);
-        if (res != null){
-        // if (true){
-          // console.log('ready');
+        if (res != null) {
           this.message1 = 'Total Amount: ' + res;
         } else {
           this.message1 = '统计失败！Fail to count!';
@@ -60,10 +60,10 @@ export class StatisticsComponent implements OnInit {
   }
 
   groupByCreateDate(): void {
-    this.message2 = '';
+    this.message = '';
     // Check required input, alert if missing any
-    if (this.oneRecord2.createdAt === '') {
-      this.message2 = '请输入起始日期！Create date required!';
+    if (this.oneRecord2.createdAt == null || this.oneRecord2.createdAt == 'undefined-undefined-undefined') {
+      this.message = '请输入起始日期！Create date required!';
       return;
     }
 
@@ -78,7 +78,6 @@ export class StatisticsComponent implements OnInit {
       day = '0' + day;
     }
     this.oneRecord2.createdAt = year + '-' + month + '-' + day;
-    this.message2 = this.oneRecord2.createdAt;
 
     const url = 'http://192.168.0.100:8080/BondSaleCtrl/orderdate';
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -87,18 +86,13 @@ export class StatisticsComponent implements OnInit {
     this.http.post<SalesRecord>(url, JSON.stringify(this.oneRecord2), httpOptions).subscribe(
       (res: any) => {
         console.log(res);
-        if (res != null){
-        // if (true){
-          // console.log('ready');
+        if (res != null) {
           this.message2 = 'Total Amount: ' + res;
         } else {
           this.message2 = '统计失败！Fail to count!';
         }
       }
     );
-
-    // this.message = '统计已生成！Statistics generated!';
-
   }
 
 }

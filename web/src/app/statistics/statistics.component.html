@@ -9,7 +9,7 @@
   </pre> -->
   <div class="form-group">
     <label>销售姓名 Sales Name</label>
-    <input [(ngModel)]="oneRecord1.saleName" class="form-control" placeholder='Ruby' />
+    <input [(ngModel)]="oneRecord1.saleName" class="form-control" placeholder='Sales Name' />
   </div>
 
 
@@ -40,5 +40,7 @@
 
   <button (click)="groupByCreateDate()" type="submit" class="btn btn-primary">按起始日期统计 By Create Date</button>
   <p id="message2" style="color:black; position: relative; bottom:-5px">{{message2}}</p>
+
+  <p id="message" style="color:red; position: relative; bottom:-5px">{{message}}</p>
 
 </div>

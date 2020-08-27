@@ -28,9 +28,9 @@ export class AddRecordComponent implements OnInit {
   message: string;
   oneRecord: SalesRecord = {
     id: null,
-    bondName: 'Bond A',
-    saleName: 'Ruby',
-    amount: 1000,
+    bondName: '',
+    saleName: '',
+    amount: null,
     createdAt: '',
     updatedAt: '2021-01-01T00:00'
   };
@@ -44,7 +44,6 @@ export class AddRecordComponent implements OnInit {
     this.message = '';
     // Check required input, alert if missing any
     if (this.oneRecord.saleName == '' || this.oneRecord.bondName == '' || this.oneRecord.createdAt == '' || this.oneRecord.createdAt == 'undefined-undefined-undefinedT00:00' || this.oneRecord.amount == null) {
-      // this.modalService.open(ModalContent);
       this.message = '请完成所有输入栏！All fields required!';
       return;
     }
@@ -69,8 +68,6 @@ export class AddRecordComponent implements OnInit {
       (res: any) => {
         console.log(res);
         if (res != null){
-        // if (true){
-          // console.log('ready');
           const modalRef = this.modalService.open(ModalContent);
           modalRef.componentInstance.result = '数据录入成功！Record added successfully!';
         } else {
@@ -78,11 +75,5 @@ export class AddRecordComponent implements OnInit {
         }
       }
     );
-
-    // const modalRef = this.modalService.open(ModalContent);
-    // modalRef.componentInstance.result = '数据录入成功！Record added successfully!';
-    // this.modalService.open(ModalContent);
-    // this.message = '数据录入成功！Record added successfully!';
   }
-
 }

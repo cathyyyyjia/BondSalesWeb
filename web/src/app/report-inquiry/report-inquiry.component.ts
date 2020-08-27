@@ -3,9 +3,6 @@ import { SalesRecord } from '../salesRecord';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-const salesList = ['Tom', 'Jerry', 'Cathy', 'Ruby', 'Charlie', 'Wang', 'Zhang', 'Blabla'];
-const bondList = ['Bond A', 'Bond B'];
-
 interface tableResult {
   id: number;
   bondName: string;
@@ -84,8 +81,6 @@ export class ReportInquiryComponent implements OnInit {
       (res: any) => {
         console.log(res);
         if (res != null){
-        // if (true){
-          // console.log('ready');
           this.tableResult = res;
           const modalRef = this.modalService.open(ModalContent);
           modalRef.componentInstance.result = '报告已生成！Report generated!';
@@ -94,10 +89,6 @@ export class ReportInquiryComponent implements OnInit {
         }
       }
     );
-
-    // const modalRef = this.modalService.open(ModalContent);
-    // modalRef.componentInstance.result = '报告已生成！Report generated!';
-    // this.message = '报告已生成！Report generated!';
   }
 
 }

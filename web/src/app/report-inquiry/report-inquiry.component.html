@@ -4,15 +4,15 @@
   </div>
   <hr>
   <!-- <pre>
-    {{oneRecord | json}}
-  </pre> -->
+      {{oneRecord | json}}
+    </pre> -->
   <div class="form-group">
     <label>销售姓名 Sales Name</label>
-    <input [(ngModel)]="oneRecord.saleName" placeholder='Ruby' type="text" class="form-control"/>
+    <input [(ngModel)]="oneRecord.saleName" placeholder='Sales Name' type="text" class="form-control" />
   </div>
   <div class="form-group">
     <label>债券类型 Bond Name</label>
-    <input [(ngModel)]="oneRecord.bondName" placeholder='Bond A' type="text" class="form-control"/>
+    <input [(ngModel)]="oneRecord.bondName" placeholder='Bond Name' type="text" class="form-control" />
   </div>
   <div class="form-group">
     <label>起始日期 Create Date</label>
@@ -38,8 +38,8 @@
   <p id="message" style="color:red; position: relative; bottom:-5px">{{message}}</p>
 </div>
 
-<div style="display:inline-block;" id="displayTable">
-  <table  class="table table-striped" style="position: relative;left: 40px">
+<div style="display:inline-block;" id="displayTable" ng-show="ifShow">
+  <table class="table table-striped" style="position: relative;left: 40px">
     <thead>
       <tr>
         <th scope="col">ID</th>
