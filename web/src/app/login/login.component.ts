@@ -38,11 +38,9 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         console.log(res);
         if (res != null){
-        // if (true){
-          // console.log('ready');
           this.router.navigate(['manage']);
         } else {
-          this.message = "登录失败！Login failed!";
+          this.message = '用户不存在或密码错误!\nInvalid user or password!';
         }
       }
     );

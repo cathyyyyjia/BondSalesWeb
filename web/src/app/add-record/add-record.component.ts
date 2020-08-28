@@ -26,6 +26,7 @@ export class ModalContent {
 export class AddRecordComponent implements OnInit {
 
   message: string;
+  messageUpload: string;
   oneRecord: SalesRecord = {
     id: null,
     bondName: '',
@@ -34,10 +35,31 @@ export class AddRecordComponent implements OnInit {
     createdAt: '',
     updatedAt: '2021-01-01T00:00'
   };
+  fileUrl: string;
+  private _jsonURL = 'assets/data.json';
 
   constructor(private http: HttpClient, private modalService: NgbModal) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  uploadFile() {
+    console.log(this.fileUrl);
+    this.messageUpload = '';
+    this.http.get(this._jsonURL).subscribe(data => {
+      const url = 'http://192.168.0.100:8080/BondSaleCtrl/importData';
+      const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
+      console.log(data);
+      this.http.post(url, data, httpOptions).subscribe((res: any) => {
+        console.log(res);
+        if (res == true) {
+          // this.messageUpload = "导入成功！Success!";
+          const modalRef = this.modalService.open(ModalContent);
+          modalRef.componentInstance.result = '导入成功！Import Successfully!';
+        }
+      });
+    }
+    );
   }
 
   addData(): void {
@@ -69,7 +91,7 @@ export class AddRecordComponent implements OnInit {
     this.http.post<SalesRecord>(url, JSON.stringify(this.oneRecord), httpOptions).subscribe(
       (res: any) => {
         console.log(res);
-        if (res != null){
+        if (res != null) {
           const modalRef = this.modalService.open(ModalContent);
           modalRef.componentInstance.result = '数据录入成功！Record added successfully!';
         } else {

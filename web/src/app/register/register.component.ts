@@ -40,12 +40,11 @@ export class RegisterComponent implements OnInit {
         if (res === 'success'){
           this.router.navigate(['login']);
         } else if (res === 'registered') {
-          this.message = '注册重复！User lready Registered!';
+          this.message = '注册重复！User already registered!';
         } else {
           this.message = '注册失败！Registration failed!';
         }
       }
     );
-    // this.router.navigate(['login']);
   }
 }

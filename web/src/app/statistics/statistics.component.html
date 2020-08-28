@@ -1,13 +1,12 @@
-<div>
+<div style="width:600px">
   <div class="header">
     <h4 class="title">统计 Statistics</h4>
   </div>
   <hr>
   <div>
     <div>
-      <input [(ngModel)]="fileUrl" type="file" style="display: inline-block; width:220px"/>
-      <button (click)="uploadFile()" type="submit" class="btn btn-primary"style="display: inline-block;">导入 Import</button>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button (click)="groupByName()" type="submit" class="btn btn-primary"
         style="display: inline-block;">按销售姓名生成报表<br>Report By Sales Name</button>
       &nbsp;&nbsp;&nbsp;
@@ -15,7 +14,6 @@
         style="display: inline-block;">按初始日期生成报表<br>Report By Create Date</button>
 
     </div>
-    <p id="messageUpload" style="position: relative; bottom:-5px">{{messageUpload}}</p>
     <p id="messageErr" style="color:red; position: relative; bottom:-5px">{{messageErr}}</p>
   </div>
 </div>
