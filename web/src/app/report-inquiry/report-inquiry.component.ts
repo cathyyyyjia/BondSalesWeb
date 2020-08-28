@@ -87,12 +87,12 @@ export class ReportInquiryComponent implements OnInit {
       (res: any) => {
         console.log(res);
         if (res != null) {
-          this.field1 = "ID";
-          this.field2 = "Sales Name";
-          this.field3 = "Bond Name";
-          this.field4 = "Create Date";
-          this.field5 = "Update Date";
-          this.field6 = "Amount";
+          this.field1 = 'ID';
+          this.field2 = 'Sales Name';
+          this.field3 = 'Bond Name';
+          this.field4 = 'Create Date';
+          this.field5 = 'Update Date';
+          this.field6 = 'Amount';
           this.tableResult = res;
           const modalRef = this.modalService.open(ModalContent);
           modalRef.componentInstance.result = '报告已生成！Report generated!';
@@ -102,5 +102,4 @@ export class ReportInquiryComponent implements OnInit {
       }
     );
   }
-
 }
